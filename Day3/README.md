@@ -85,7 +85,7 @@ $$
 
 where $a_i$ is a variable indicating if item $i$ belongs to the packing we are constructing. If we massage the objective function a little, we see that
 
-$\text{minimize} \hspace{0.5em} 1 - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{minimize} - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{maximize} \displaystyle\sum_{i \in I} a_i\pi_i$
+$\text{minimize} \hspace{0.5em} 1 - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{minimize} - \displaystyle\sum_{i \in I} a_i\pi_i = 1 - \text{maximize} \displaystyle\sum_{i \in I} a_i\pi_i$
 
  This objective function, allied to the constraint, is precisely a knapsack problem. This is very helpful, as it is crucial in column generation to have the ability to quickly generate columns, and knapsack is one of the most well-studied problems in Operations Research, for which there are incredibly efficient algorithms.
 

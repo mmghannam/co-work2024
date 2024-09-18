@@ -146,20 +146,29 @@ Now that we have implemented the pricing problem, and the branching rule, and ha
 You can test your implementation by running the `test_bnp.py` file.
 
 ### 3.3 Improving the vanilla Branch-and-Price
+There are many more tricks to make your Branch-and-Price code faster and more robust. The following is a collection of bonus exercises that ask you to implement some of these tricks. You may complete them in any order you'd like.
 
-#### Bonus Exercise 1: Initializing column generation
+#### Bonus Exercise 1: Handling numerics
+If you managed to implement everything correctly, try to run your code to solve an instance with many items. Let's say 200. You will most likely get into an infinite loop. 
+
+Investigate why this happens (the name of the exercise should give you a hint) and fix it.
+
+#### Bonus Exercise 2: Using integrality
+As the objective function of the RMP always takes integer values, you can inform SCIP about it with the [setObjIntegral](https://scipopt.github.io/PySCIPOpt/docs/html/classpyscipopt_1_1scip_1_1Model.html#ae9f1c77d31148661be3e4261df738b39) method. In some instances, it might give you a performance improvement.  
+
+#### Bonus Exercise 3: Initializing column generation
 Column generation requires an initial set of columns in order to get started. The current implementation starts with the single item per bin solution.
 Experiment with different ways of providing these columns for the bin packing problem.
 
-#### Bonus Exercises 2: Multiple columns per iteration
+#### Bonus Exercises 4: Multiple columns per iteration
 The current implementation only adds one column per iteration. Implement adding multiple columns per iteration and report how it affects the performance.
 
-#### Bonus Exercise 3: Speeding up pricing
+#### Bonus Exercise 5: Speeding up pricing
 Think of simple ways to speed up the pricing rounds and also reduce their invocations. Are there better algorithms for knapsack?
 
-#### Bonus Exercise 4: Different-sized bins
+#### Bonus Exercise 6: Different-sized bins
 What is needed to allow for bins of different sizes?
 
-#### Bonus Exercise 5: Lagrangian bound
+#### Bonus Exercise 7: Lagrangian bound
 Read about the Lagrangian bound in the context of column generation and implement it in your pricer.
 Hint: You can return your computed lower-bound in the pricer and SCIP will use it to prune the tree.

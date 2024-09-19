@@ -25,7 +25,6 @@ class RyanFoster(Branchrule):
             (eval(var.name.replace("t_", "")), val) for var, val in zip(lpcands, lpcandssol)
         ]
         
-        # TODO (Exercise 2: choose a fractional pair to branch on)
         chosen_pair = choose_fractional_pair(patterns_with_vals)
         
         parent_together = set()

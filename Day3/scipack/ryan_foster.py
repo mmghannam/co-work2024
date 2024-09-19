@@ -32,7 +32,7 @@ class RyanFoster(Branchrule):
         parent_apart = set()
         
         # get the branching decisions of the parent node
-        parent = self.model.getCurrentNode().getParent()
+        parent = self.model.getCurrentNode()
         if parent:
             parent_together = set(self.branching_decisions[parent.getNumber()]["together"])
             parent_apart = set(self.branching_decisions[parent.getNumber()]["apart"])

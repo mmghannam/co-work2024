@@ -78,7 +78,7 @@ The column that should be added to the RMP is the one with the most negative red
 $$
 \begin{align*}
 \text{minimize} & \quad 1 - \sum_{i \in I} a_i\pi_i \\
-\text{subject to} & \quad \sum_{i \in I} a_i \leq C \\
+\text{subject to} & \quad \sum_{i \in I} s_i a_i \leq C \\
 & \quad a_i \in \lbrace0, 1\rbrace, \quad \forall i \in I,
 \end{align*}
 $$

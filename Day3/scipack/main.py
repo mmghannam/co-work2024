@@ -24,4 +24,4 @@ if __name__ == "__main__":
         val = model.getVal(var)
         if val > 1e-6:
             var_name = str(var).replace("t_", "")
-            print('-', var_name)
+            print(var_name, end=", ")

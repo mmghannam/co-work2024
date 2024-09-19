@@ -85,7 +85,7 @@ $$
 
 where $a_i$ is a variable indicating if item $i$ belongs to the packing we are constructing. If we massage the objective function a little, we see that
 
-$\text{minimize} \hspace{0.5em} 1 - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{minimize} - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{maximize} \displaystyle\sum_{i \in I} a_i\pi_i$
+$\text{minimize} \hspace{0.5em} 1 - \displaystyle\sum_{i \in I} a_i\pi_i = 1 + \text{minimize} - \displaystyle\sum_{i \in I} a_i\pi_i = 1 - \text{maximize} \displaystyle\sum_{i \in I} a_i\pi_i$
 
  This objective function, allied to the constraint, is precisely a knapsack problem. This is very helpful, as it is crucial in column generation to have the ability to quickly generate columns, and knapsack is one of the most well-studied problems in Operations Research, for which there are incredibly efficient algorithms.
 
@@ -146,20 +146,29 @@ Now that we have implemented the pricing problem, and the branching rule, and ha
 You can test your implementation by running the `test_bnp.py` file.
 
 ### 3.3 Improving the vanilla Branch-and-Price
+There are many more tricks to make your Branch-and-Price code faster and more robust. The following is a collection of self-paced exercises that ask you to implement some of these tricks. You may complete them in any order you'd like.
 
-#### Bonus Exercise 1: Initializing column generation
-Column generation requires an initial set of columns in order to get started. The current implementation starts with the single item per bin solution.
-Experiment with different ways of providing these columns for the bin packing problem.
 
-#### Bonus Exercises 2: Multiple columns per iteration
+#### Bonus Exercise 1: Using integrality
+As the objective function of the RMP always takes integer values, you can inform SCIP about it with the [setObjIntegral](https://scipopt.github.io/PySCIPOpt/docs/html/classpyscipopt_1_1scip_1_1Model.html#ae9f1c77d31148661be3e4261df738b39) method. In some instances, it might give you a performance improvement.  
+
+#### Bonus Exercise 2: Initializing column generation
+Column generation requires an initial set of columns to get started. The current implementation starts with the single item per bin solution, which is the worst feasible solution.
+Explore different heuristics to bin packing and provide their solutions to the pricer you created.
+
+#### Bonus Exercise 3: Handling numerics
+If you managed to implement everything correctly, try to run your code to solve an instance with 200 items. You will most likely get into an infinite loop. 
+
+Investigate why this happens (the name of the exercise should give you a hint) and fix it. Hint: Look at the reduced cost of the columns you are generating.
+
+#### Bonus Exercise 4: Speeding up pricing
 The current implementation only adds one column per iteration. Implement adding multiple columns per iteration and report how it affects the performance.
 
-#### Bonus Exercise 3: Speeding up pricing
-Think of simple ways to speed up the pricing rounds and also reduce their invocations. Are there better algorithms for knapsack?
+Think of simple ways to speed up the pricing rounds. Are there better algorithms for knapsack?
 
-#### Bonus Exercise 4: Different-sized bins
-What is needed to allow for bins of different sizes?
+#### Bonus Exercise 5: Different-sized bins
+What is needed to allow for bins of different sizes? Implement it in your Branch-and-Price code.
 
-#### Bonus Exercise 5: Lagrangian bound
+#### Bonus Exercise 6: Lagrangian bound
 Read about the Lagrangian bound in the context of column generation and implement it in your pricer.
 Hint: You can return your computed lower-bound in the pricer and SCIP will use it to prune the tree.

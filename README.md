@@ -13,7 +13,7 @@ The material for each day can be found in the respective folder, with further in
 
 
 ## Getting Started
-For the easiest and smoothest experience, **use GitHub codespaces** to start a development environment in the cloud. On the main page of the [co-at-work-2024 github repository](https://github.com/mmghannam/co-at-work-2024):
+For the easiest and smoothest experience, **use GitHub codespaces** to start a development environment in the cloud. On the main page of the [co-at-work-2024 github repository](https://github.com/mmghannam/co-work2024):
   - click on the green `code` button on the top-right
   - select the tab `codespaces` and add a new one by clicking the `+` button
   - after the codespace is created, open the notebook for the corresponding day, e.g. `Day1/TutorialMIPbasics.ipynb`

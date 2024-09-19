@@ -3,7 +3,7 @@ from compact import binpacking_compact
 from generator import random_bin_packing_instance
 
 if __name__ == "__main__":
-    compact = False
+    compact = True # whether to use the compact model or the extended model
     
     capacity = 100
     sizes = random_bin_packing_instance(20, capacity)

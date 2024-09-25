@@ -1,4 +1,3 @@
-import cython
 import numpy as np
 from vrppd_parameters import Parameters
 import sys

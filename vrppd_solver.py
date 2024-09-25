@@ -1,7 +1,7 @@
 from vrppd_parameters import Parameters
 from vrppd_solution import Solution
 import time
-from random_greedy_courier_heuristic import random_greedy_courier_heuristic
+from heuristic_generator import random_greedy_courier_heuristic
 
 def optimize(param: Parameters, solver_settings: dict) -> Solution:
     best_sol = random_greedy_courier_heuristic(param, Solution(param))

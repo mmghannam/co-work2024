@@ -50,7 +50,7 @@ def is_feasible(param: vrppd_parameters.Parameters, sol: vrppd_solution.Solution
                 courier_capacity += param.delivery_capacity[sol.routing_plan[i][j] - 1]
             if sol.routing_plan[i][j] < 0:
                 courier_capacity -= param.delivery_capacity[-sol.routing_plan[i][j] - 1]
-            if courier_capacity > param.courier_capacities[i]:
+            if courier_capacity > param.courier_capacity[i]:
                 print(f"Capacity of courier {i+1} is exceeded")
                 feasibility = False
 
@@ -80,6 +80,9 @@ def is_feasible(param: vrppd_parameters.Parameters, sol: vrppd_solution.Solution
         
     if total_delivery_time != sol.total_delivery_time:
         print(f"Total delivery time is not equal to sum of delivery times")
+        print(f"Delivery times: {sol.delivery_delivery_time}")
+        print(f"Total delivery time: {sol.total_delivery_time}")
+
         feasibility = False
 
     return feasibility

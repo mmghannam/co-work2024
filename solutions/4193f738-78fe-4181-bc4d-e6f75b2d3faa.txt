@@ -1,0 +1,17 @@
+Courier,Routing Plan
+Courier 0,"[1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+Courier 1,"[2, -2, 5, -5, 0, 0, 0, 0, 0, 0, 0, 0]"
+Courier 2,"[3, 4, -3, -4, 6, -6, 0, 0, 0, 0, 0, 0]"
+
+Delivery,Assigned Courier,Delivery Time
+0,1,31.0
+1,2,30.0
+2,3,27.0
+3,3,40.0
+4,2,54.0
+5,3,70.0
+
+Courier,Number of Deliveries
+Courier 0,1
+Courier 1,2
+Courier 2,3

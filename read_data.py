@@ -118,7 +118,7 @@ def process_all_instances(parent_folder):
 
         # Check if it's a directory (instance folder)
         if os.path.isdir(instance_folder_path):
-            print(f"Processing instance: {instance_folder}")
+            #print(f"Processing instance: {instance_folder}")
             try:
                 couriers, deliveries, travel_time = process_instance_folder(instance_folder_path)
 

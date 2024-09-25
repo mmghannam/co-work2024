@@ -199,7 +199,7 @@ def check_all_activities_covered(routes, couriers, deliveries):
   return all_activities_are_covered
 
 
-def is_feasible(route, couriers, deliveries):
+def is_feasible(route, couriers, deliveries, traveltimes):
   courier = get_courier(couriers, route.rider_id)
   courierCapacity = courier.capacity
   load = 0
@@ -220,7 +220,46 @@ def is_feasible(route, couriers, deliveries):
     print(
       f"Route of courier {route.rider_id} only has a pickup for deliveries {orders_in_bag}.")
     return False
+
+  if not check_route_length(route):
+    print(
+      f"Route of courier {route.rider_id} contains more than four deliveries.")
+    return False
+
+  if not check_route_duration(route, couriers, deliveries, traveltimes):
+    return False
+
   return True
+
+
+def check_route_duration(route, couriers, deliveries, travelTimes):
+  currentTime = 0
+  orders_in_bag = set()
+  courier = get_courier(couriers, route.rider_id)
+  lastLocation = courier.location
+  for activity in route.stops:
+    delivery = get_delivery(deliveries, activity)
+    if activity in orders_in_bag:
+      orders_in_bag.remove(activity)
+      currentTime = currentTime + travelTimes[lastLocation - 1][
+        delivery.dropoff_loc - 1]
+      lastLocation = delivery.dropoff_loc
+    else:
+      orders_in_bag.add(activity)
+      currentTime = max(delivery.time_window_start,
+                        currentTime + travelTimes[lastLocation - 1][
+                          delivery.pickup_loc - 1])
+      lastLocation = delivery.pickup_loc
+
+  if currentTime > 180:
+    print(
+      f"Route of courier {route.rider_id} is takes too long with {currentTime} minutes.")
+    return False
+
+  return True
+
+def check_route_length(route):
+  return len(route.stops) <= 8
 
 
 def get_route_cost(route, couriers, deliveries, travelTimes):
@@ -315,7 +354,8 @@ def main():
     all_routes_are_feasible = True
     for route in routes:
       route_is_feasible = is_feasible(route, instance_data['couriers'],
-                                      instance_data['deliveries'])
+                                      instance_data['deliveries'],
+                                      instance_data['travel_time'])
       if not route_is_feasible:
         print("Route of courier " + str(route.rider_id) + " is not feasible!")
         all_routes_are_feasible = False

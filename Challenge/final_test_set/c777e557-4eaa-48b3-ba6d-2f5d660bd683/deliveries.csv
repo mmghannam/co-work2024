@@ -1,0 +1,5 @@
+ID,Capacity,Pickup Loc,Time Window Start,Pickup Stacking_Id,Dropoff Loc
+2,56,2,13,43671,3
+3,3,4,8,44514,5
+4,3,4,9,44514,6
+5,4,4,10,44514,7

@@ -172,3 +172,9 @@ What is needed to allow for bins of different sizes? Implement it in your Branch
 #### Bonus Exercise 6: Lagrangian bound
 Read about the Lagrangian bound in the context of column generation and implement it in your pricer.
 Hint: You can return your computed lower-bound in the pricer and SCIP will use it to prune the tree.
+
+#### Bonus Exercise 7: Removing together constraints
+Having a constraint stipulating that two items must be packed in the same bin is functionally the same as having a single item with the size of the other two and removing them.
+The benefit of doing this instead is that we reduce the size of the pricing problem by one variable and one constraint per together constraint, which might provide a marginal benefit.
+
+Implement this and remember to recover the solution in terms of the original items.
